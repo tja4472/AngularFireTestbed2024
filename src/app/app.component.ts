@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Auth, signInAnonymously } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'AngularFireTestbed2024';
+
+  constructor(@Optional() private auth: Auth) {
+    // signInAnonymously(this.auth);
+  }
 }
