@@ -1,5 +1,15 @@
 # AngularFireTestbed2024
 
+ng new AngularFireTestbed2024 --style=css --routing --ssr=false --inline-style --inline-template
+
+https://analogjs.org/docs/features/testing/vitest
+
+npm install @analogjs/platform --save-dev
+
+ng generate @analogjs/platform:setup-vitest
+
+ng add @angular/fire
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
 ## Development server

@@ -2,7 +2,7 @@ import { Component, Inject, Optional } from '@angular/core';
 import { FirebaseApp } from '@angular/fire/app';
 import { Response } from 'express';
 
-// import { FirestoreComponent } from '../firestore/firestore.component';
+import { FirestoreComponent } from '../firestore/firestore.component';
 
 import { AuthComponent } from '../auth/auth.component';
 
@@ -12,9 +12,10 @@ import { AuthComponent } from '../auth/auth.component';
     Hello world!
     {{ firebaseApp.name }}
     <app-auth></app-auth>
+    <app-firestore></app-firestore>
   `,
   standalone: true,
-  imports: [AuthComponent],
+  imports: [AuthComponent, FirestoreComponent],
 })
 export class HomeComponent {
   constructor(public readonly firebaseApp: FirebaseApp) {}
