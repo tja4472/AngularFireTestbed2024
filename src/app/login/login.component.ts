@@ -1,27 +1,32 @@
 import { Component, OnInit, Optional } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, signInAnonymously } from '@angular/fire/auth';
+import {
+  Auth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInAnonymously,
+} from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-login',
-    template: `
+  selector: 'app-login',
+  template: `
     <p>
       <button (click)="loginWithGoogle()">Log in with Google</button>
       <button (click)="loginAnonymously()">Log in with Anonymously</button>
     </p>
   `,
-    styles: [],
-    standalone: true
+  styles: [],
+  standalone: true,
 })
 export class LoginComponent implements OnInit {
-
   redirect = ['/'];
 
-  constructor(@Optional() private auth: Auth, private router: Router) {
-  }
+  constructor(
+    @Optional() private auth: Auth,
+    private router: Router,
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   async loginWithGoogle() {
     const provider = new GoogleAuthProvider();
@@ -33,5 +38,4 @@ export class LoginComponent implements OnInit {
     await signInAnonymously(this.auth);
     await this.router.navigate(this.redirect);
   }
-
 }

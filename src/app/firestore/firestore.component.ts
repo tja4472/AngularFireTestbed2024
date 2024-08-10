@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 // import { persistenceEnabled as _persistenceEnabled } from '../app.module';
 import { traceUntilFirst } from '@angular/fire/performance';
-import { addDoc, doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
+import {
+  addDoc,
+  doc,
+  docData,
+  Firestore,
+  setDoc,
+} from '@angular/fire/firestore';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 
 /*
@@ -26,11 +32,10 @@ export class FirestoreComponent implements OnInit {
   constructor(firestore: Firestore) {
     const ref = doc(firestore, 'test/1');
 
+    setDoc(ref, { xx: 'DDD' });
 
-    setDoc(ref, { xx: 'DDD'});
-    
     // this.testDocValue$ = docData(ref).pipe(traceUntilFirst('firestore'));
-    this.testDocValue$ = docData(ref);    
+    this.testDocValue$ = docData(ref);
     // this.testDocValue$ = of('DummY')
   }
 

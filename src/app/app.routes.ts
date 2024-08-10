@@ -10,6 +10,14 @@ export const routes: Routes = [
     pathMatch: 'prefix',
   },
   {
+    path: 'joshhome',
+    loadComponent: () => import('./josh/app/home/home.component'),
+  },
+  {
+    path: 'checklist/:id',
+    loadComponent: () => import('./josh/app/checklist/checklist.component'),
+  },
+  {
     path: 'foo',
     component: HomeComponent,
     outlet: 'primary',

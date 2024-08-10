@@ -1,5 +1,10 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { DialogModule } from '@angular/cdk/dialog';
 
 import { routes } from './app.routes';
 
@@ -42,6 +47,8 @@ export const firebaseConfigEmulatorDemo: FirebaseConfig = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideRouter(routes),
+    importProvidersFrom(DialogModule),
     provideFirebaseApp(() => initializeApp(firebaseConfigEmulatorDemo)),
     provideAuth(() => {
       // const auth = getAuth();

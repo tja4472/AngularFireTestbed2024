@@ -13,6 +13,8 @@ import { AuthComponent } from '../auth/auth.component';
     {{ firebaseApp.name }}
     <app-auth></app-auth>
     <app-firestore></app-firestore>
+
+    <a href="/joshhome">Josh Home</a>
   `,
   standalone: true,
   imports: [AuthComponent, FirestoreComponent],

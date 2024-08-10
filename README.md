@@ -10,6 +10,9 @@ ng generate @analogjs/platform:setup-vitest
 
 ng add @angular/fire
 
+Based on:
+https://github.com/joshuamorony/angularstart-quicklists/tree/main
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
 ## Development server
