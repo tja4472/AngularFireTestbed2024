@@ -1,13 +1,13 @@
 import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Checklist } from 'src/app/josh/app/shared/interfaces/checklist';
+import { Checklist } from '../../shared/interfaces/checklist';
 
 @Component({
   standalone: true,
   selector: 'app-checklist-header',
   template: `
     <header>
-      <a data-testid="back-button" routerLink="/joshhome">Back</a>
+      <a data-testid="back-button" routerLink="/local-storage">Back</a>
       <h1 data-testid="checklist-title">
         {{ checklist().title }}
       </h1>

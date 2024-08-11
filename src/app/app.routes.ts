@@ -10,12 +10,16 @@ export const routes: Routes = [
     pathMatch: 'prefix',
   },
   {
-    path: 'joshhome',
-    loadComponent: () => import('./josh/app/home/home.component'),
+    path: 'local-storage',
+    loadComponent: () => import('./local-storage/home/home.component'),
   },
   {
+    path: 'local-storage/checklist/:id',
+    loadComponent: () => import('./local-storage/checklist/checklist.component'),
+  },  
+  {
     path: 'checklist/:id',
-    loadComponent: () => import('./josh/app/checklist/checklist.component'),
+    loadComponent: () => import('./local-storage/checklist/checklist.component'),
   },
   {
     path: 'foo',

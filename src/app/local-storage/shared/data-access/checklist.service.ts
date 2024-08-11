@@ -6,7 +6,7 @@ import {
   Checklist,
   EditChecklist,
 } from '../interfaces/checklist';
-import { ChecklistItemService } from 'src/app/josh/app/checklist/data-access/checklist-item.service';
+import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
 import { StorageService } from './storage.service';
 
 export interface ChecklistsState {

@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Checklist } from 'src/app/josh/app/shared/interfaces/checklist';
+import { Checklist } from '../../shared/interfaces/checklist';
 
 @Component({
   standalone: true,
@@ -10,7 +10,7 @@ import { Checklist } from 'src/app/josh/app/shared/interfaces/checklist';
       @for (checklist of checklists(); track checklist.id) {
         <li data-testid="checklist-item">
           <a
-            routerLink="/checklist/{{ checklist.id }}"
+            routerLink="/local-storage/checklist/{{ checklist.id }}"
             data-testid="checklist-link"
           >
             {{ checklist.title }}

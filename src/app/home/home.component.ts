@@ -14,7 +14,7 @@ import { AuthComponent } from '../auth/auth.component';
     <app-auth></app-auth>
     <app-firestore></app-firestore>
 
-    <a href="/joshhome">Josh Home</a>
+    <a href="/local-storage">Local Storage</a>
   `,
   standalone: true,
   imports: [AuthComponent, FirestoreComponent],
