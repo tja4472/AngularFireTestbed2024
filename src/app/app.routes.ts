@@ -19,6 +19,16 @@ export const routes: Routes = [
       import('./local-storage/checklist/checklist.component'),
   },
   {
+    path: 'firestore-using-service',
+    loadComponent: () =>
+      import('./firestore-using-service/home/home.component'),
+  },
+  {
+    path: 'firestore-using-service/checklist/:id',
+    loadComponent: () =>
+      import('./firestore-using-service/checklist/checklist.component'),
+  },
+  {
     path: 'foo',
     component: HomeComponent,
     outlet: 'primary',
