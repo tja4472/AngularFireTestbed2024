@@ -15,11 +15,8 @@ export const routes: Routes = [
   },
   {
     path: 'local-storage/checklist/:id',
-    loadComponent: () => import('./local-storage/checklist/checklist.component'),
-  },  
-  {
-    path: 'checklist/:id',
-    loadComponent: () => import('./local-storage/checklist/checklist.component'),
+    loadComponent: () =>
+      import('./local-storage/checklist/checklist.component'),
   },
   {
     path: 'foo',

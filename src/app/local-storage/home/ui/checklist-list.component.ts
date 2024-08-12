@@ -10,7 +10,7 @@ import { Checklist } from '../../shared/interfaces/checklist';
       @for (checklist of checklists(); track checklist.id) {
         <li data-testid="checklist-item">
           <a
-            routerLink="/local-storage/checklist/{{ checklist.id }}"
+            routerLink="checklist/{{ checklist.id }}"
             data-testid="checklist-link"
           >
             {{ checklist.title }}

@@ -7,7 +7,7 @@ import { Checklist } from '../../shared/interfaces/checklist';
   selector: 'app-checklist-header',
   template: `
     <header>
-      <a data-testid="back-button" routerLink="/local-storage">Back</a>
+      <a data-testid="back-button" routerLink="../../">Back</a>
       <h1 data-testid="checklist-title">
         {{ checklist().title }}
       </h1>
