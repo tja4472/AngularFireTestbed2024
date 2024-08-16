@@ -1,3 +1,5 @@
+// https://firebase.google.com/docs/firestore/security/get-started
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -9,6 +11,12 @@ service cloud.firestore {
     }
 
     match /test/{a} {
+      allow read, write: if true
+    }
+
+    // Matches any document in the users collection as well as any document
+    // in a subcollection.
+    match /users/{UserId}/{document=**} {
       allow read, write: if true
     }
 

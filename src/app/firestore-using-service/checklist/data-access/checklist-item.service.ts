@@ -10,6 +10,7 @@ import {
   RemoveChecklistItem,
 } from '../../../shared/interfaces/checklist-item';
 
+import { ChecklistItemDataService } from '../../shared/data-access/checklist-item.data.service';
 export interface ChecklistItemsState {
   checklistItems: ChecklistItem[];
   loaded: boolean;
@@ -20,6 +21,9 @@ export interface ChecklistItemsState {
 })
 export class ChecklistItemService {
   private storageService = inject(StorageService);
+  private checklistItemDataService = inject(ChecklistItemDataService);
+
+  private userId = 'DummyUser';
 
   // state
   private state = signal<ChecklistItemsState>({
@@ -32,7 +36,11 @@ export class ChecklistItemService {
   loaded = computed(() => this.state().loaded);
 
   // sources
-  private checklistItemsLoaded$ = this.storageService.loadChecklistItems();
+  // private AchecklistItemsLoaded$ = this.storageService.loadChecklistItems();
+  private checklistItemsLoaded$ = this.checklistItemDataService.getData$(
+    this.userId,
+  );
+
   add$ = new Subject<AddChecklistItem>();
   remove$ = new Subject<RemoveChecklistItem>();
   edit$ = new Subject<EditChecklistItem>();
@@ -51,7 +59,10 @@ export class ChecklistItemService {
         })),
       );
 
-    this.add$.pipe(takeUntilDestroyed()).subscribe((checklistItem) =>
+    this.add$.pipe(takeUntilDestroyed()).subscribe(
+      (checklistItem) =>
+        this.checklistItemDataService.add(checklistItem, this.userId),
+      /*      
       this.state.update((state) => ({
         ...state,
         checklistItems: [
@@ -64,22 +75,29 @@ export class ChecklistItemService {
           },
         ],
       })),
+*/
     );
 
-    this.edit$.pipe(takeUntilDestroyed()).subscribe((update) =>
+    this.edit$.pipe(takeUntilDestroyed()).subscribe(
+      (update) => this.checklistItemDataService.edit(update, this.userId),
+      /*      
       this.state.update((state) => ({
         ...state,
         checklistItems: state.checklistItems.map((item) =>
           item.id === update.id ? { ...item, title: update.data.title } : item,
         ),
       })),
+      */
     );
 
-    this.remove$.pipe(takeUntilDestroyed()).subscribe((id) =>
+    this.remove$.pipe(takeUntilDestroyed()).subscribe(
+      (id) => this.checklistItemDataService.remove(id, this.userId),
+      /*      
       this.state.update((state) => ({
         ...state,
         checklistItems: state.checklistItems.filter((item) => item.id !== id),
       })),
+*/
     );
 
     this.toggle$.pipe(takeUntilDestroyed()).subscribe((checklistItemId) =>

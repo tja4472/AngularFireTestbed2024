@@ -45,14 +45,18 @@ export const firebaseConfigEmulatorDemo: FirebaseConfig = {
   appId: '',
 };
 
+const appName = 'AngularFire';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     importProvidersFrom(DialogModule),
-    provideFirebaseApp(() => initializeApp(firebaseConfigEmulatorDemo)),
+    provideFirebaseApp(() =>
+      initializeApp(firebaseConfigEmulatorDemo, appName),
+    ),
     provideAuth(() => {
       // const auth = getAuth();
-      const auth = initializeAuth(getApp(), {
+      const auth = initializeAuth(getApp(appName), {
         persistence: indexedDBLocalPersistence,
         popupRedirectResolver: browserPopupRedirectResolver,
       });
@@ -67,7 +71,7 @@ export const appConfig: ApplicationConfig = {
       let firestore;
 
       // bug: experimentalAutoDetectLongPolling not picked up via `getFirestore`
-      const app = getApp();
+      const app = getApp(appName);
       firestore = initializeFirestore(app, {
         experimentalAutoDetectLongPolling: true,
         // localCache: persistentLocalCache(),

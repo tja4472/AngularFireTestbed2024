@@ -1,14 +1,14 @@
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Subject } from 'rxjs';
+import { Subject, tap } from 'rxjs';
 import {
   AddChecklist,
   Checklist,
   EditChecklist,
-} from '../../../shared/interfaces/checklist'
+} from '../../../shared/interfaces/checklist';
 import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
-import { StorageService } from './storage.service';
 
+import { ChecklistDataService } from './checklist.data.service ';
 export interface ChecklistsState {
   checklists: Checklist[];
   loaded: boolean;
@@ -20,7 +20,9 @@ export interface ChecklistsState {
 })
 export class ChecklistService {
   private checklistItemService = inject(ChecklistItemService);
-  private storageService = inject(StorageService);
+  private storageService = inject(ChecklistDataService);
+
+  private userId = 'DummyUser';
 
   // state
   private state = signal<ChecklistsState>({
@@ -35,7 +37,8 @@ export class ChecklistService {
   error = computed(() => this.state().error);
 
   // sources
-  private checklistsLoaded$ = this.storageService.loadChecklists();
+  // private checklistsLoaded$ = this.storageService.loadChecklists();
+  private checklistsLoaded$ = this.storageService.getData$(this.userId);
   add$ = new Subject<AddChecklist>();
   edit$ = new Subject<EditChecklist>();
   remove$ = this.checklistItemService.checklistRemoved$;
@@ -52,60 +55,18 @@ export class ChecklistService {
       error: (err) => this.state.update((state) => ({ ...state, error: err })),
     });
 
-    this.add$.pipe(takeUntilDestroyed()).subscribe((checklist) =>
-      this.state.update((state) => ({
-        ...state,
-        checklists: [...state.checklists, this.addIdToChecklist(checklist)],
-      })),
-    );
+    this.add$
+      .pipe(takeUntilDestroyed())
+      .subscribe((checklist) =>
+        this.storageService.add(checklist, this.userId),
+      );
 
-    this.remove$.pipe(takeUntilDestroyed()).subscribe((id) =>
-      this.state.update((state) => ({
-        ...state,
-        checklists: state.checklists.filter((checklist) => checklist.id !== id),
-      })),
-    );
+    this.remove$
+      .pipe(takeUntilDestroyed())
+      .subscribe((id) => this.storageService.remove(id, this.userId));
 
-    this.edit$.pipe(takeUntilDestroyed()).subscribe((update) =>
-      this.state.update((state) => ({
-        ...state,
-        checklists: state.checklists.map((checklist) =>
-          checklist.id === update.id
-            ? { ...checklist, title: update.data.title }
-            : checklist,
-        ),
-      })),
-    );
-
-    // effects
-    effect(() => {
-      if (this.loaded()) {
-        this.storageService.saveChecklists(this.checklists());
-      }
-    });
-  }
-
-  private addIdToChecklist(checklist: AddChecklist) {
-    return {
-      ...checklist,
-      id: this.generateSlug(checklist.title),
-    };
-  }
-
-  private generateSlug(title: string) {
-    // NOTE: This is a simplistic slug generator and will not handle things like special characters.
-    let slug = title.toLowerCase().replace(/\s+/g, '-');
-
-    // Check if the slug already exists
-    const matchingSlugs = this.checklists().find(
-      (checklist) => checklist.id === slug,
-    );
-
-    // If the title is already being used, add a string to make the slug unique
-    if (matchingSlugs) {
-      slug = slug + Date.now().toString();
-    }
-
-    return slug;
+    this.edit$
+      .pipe(takeUntilDestroyed())
+      .subscribe((update) => this.storageService.edit(update, this.userId));
   }
 }

@@ -1,5 +1,3 @@
-# AngularFireTestbed2024
-
 ng new AngularFireTestbed2024 --style=css --routing --ssr=false --inline-style --inline-template
 
 https://analogjs.org/docs/features/testing/vitest
@@ -12,6 +10,20 @@ ng add @angular/fire
 
 Based on:
 https://github.com/joshuamorony/angularstart-quicklists/tree/main
+
+## Problems
+
+### tsconfig
+
+Uses `"moduleResolution": "Node"` as rxfire as issues with `"moduleResolution": "Bundler"`.
+
+The convience observables provided by the Auth module are no longer type safe #3541
+https://github.com/angular/angularfire/issues/3541
+
+Support "moduleResolution": "bundler" in tsconfig.json #106
+https://github.com/FirebaseExtended/rxfire/issues/106
+
+# AngularFireTestbed2024
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
