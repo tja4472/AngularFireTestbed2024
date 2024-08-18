@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { ChecklistItem } from '../../../shared/interfaces/checklist-item';
+import { ChecklistItem } from '../../../../shared/interfaces/checklist-item';
 
 @Component({
   standalone: true,

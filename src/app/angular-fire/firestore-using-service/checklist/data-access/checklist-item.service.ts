@@ -2,13 +2,13 @@ import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
 import { StorageService } from '../../shared/data-access/storage.service';
-import { RemoveChecklist } from '../../../shared/interfaces/checklist';
+import { RemoveChecklist } from '../../../../shared/interfaces/checklist';
 import {
   AddChecklistItem,
   ChecklistItem,
   EditChecklistItem,
   RemoveChecklistItem,
-} from '../../../shared/interfaces/checklist-item';
+} from '../../../../shared/interfaces/checklist-item';
 
 import { ChecklistItemDataService } from '../../shared/data-access/checklist-item.data.service';
 export interface ChecklistItemsState {

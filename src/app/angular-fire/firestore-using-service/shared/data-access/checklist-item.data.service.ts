@@ -5,14 +5,14 @@ import {
   AddChecklist,
   Checklist,
   EditChecklist,
-} from '../../../shared/interfaces/checklist';
+} from '../../../../shared/interfaces/checklist';
 
 import {
   AddChecklistItem,
   ChecklistItem,
   EditChecklistItem,
   RemoveChecklistItem,
-} from '../../../shared/interfaces/checklist-item';
+} from '../../../../shared/interfaces/checklist-item';
 
 import {
   collection,
@@ -25,7 +25,7 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { FirestoreUtils } from '../../../shared/firestore-utils';
+import { FirestoreUtils } from '../../../../shared/firestore-utils';
 
 @Injectable({
   providedIn: 'root',

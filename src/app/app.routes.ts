@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './angular-fire/basic/home/home.component';
 
 export const routes: Routes = [
   {
@@ -21,12 +21,14 @@ export const routes: Routes = [
   {
     path: 'firestore-using-service',
     loadComponent: () =>
-      import('./firestore-using-service/home/home.component'),
+      import('./angular-fire/firestore-using-service/home/home.component'),
   },
   {
     path: 'firestore-using-service/checklist/:id',
     loadComponent: () =>
-      import('./firestore-using-service/checklist/checklist.component'),
+      import(
+        './angular-fire/firestore-using-service/checklist/checklist.component'
+      ),
   },
   {
     path: 'foo',
@@ -37,7 +39,9 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () =>
-      import('./login/login.component').then((m) => m.LoginComponent),
+      import('./angular-fire/basic/login/login.component').then(
+        (m) => m.LoginComponent,
+      ),
   },
 ];
 

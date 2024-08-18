@@ -1,14 +1,16 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { Component, inject, Optional } from '@angular/core';
 import { FirebaseApp } from '@angular/fire/app';
 import { Response } from 'express';
 
 import { FirestoreComponent } from '../firestore/firestore.component';
 
 import { AuthComponent } from '../auth/auth.component';
+// import { AUTH_FIREBASE } from '../../../firebase-injection-tokens';
 
 @Component({
   selector: 'app-home',
   template: `
+    <h2>AngularFire</h2>
     Hello world!
     {{ firebaseApp.name }}
     <app-auth></app-auth>
@@ -22,5 +24,7 @@ import { AuthComponent } from '../auth/auth.component';
   imports: [AuthComponent, FirestoreComponent],
 })
 export class HomeComponent {
+  // private authFirebase = inject(AUTH_FIREBASE);
+
   constructor(public readonly firebaseApp: FirebaseApp) {}
 }

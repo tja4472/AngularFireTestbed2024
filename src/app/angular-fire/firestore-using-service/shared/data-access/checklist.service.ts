@@ -5,7 +5,7 @@ import {
   AddChecklist,
   Checklist,
   EditChecklist,
-} from '../../../shared/interfaces/checklist';
+} from '../../../../shared/interfaces/checklist';
 import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
 
 import { ChecklistDataService } from './checklist.data.service ';

@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy, Optional } from '@angular/core';
+import { Component, OnInit, OnDestroy, Optional, inject } from '@angular/core';
 import {
   Auth,
   authState,
-  signInAnonymously,
+  // signInAnonymously,
   signOut,
   User,
 } from '@angular/fire/auth';
