@@ -18,7 +18,7 @@ import { NgIf, AsyncPipe } from '@angular/common';
     <p>
       Auth!
       <code>{{ (user | async)?.uid }}</code>
-      <button routerLink="/login" *ngIf="showLoginButton">Log in</button>
+      <button routerLink="./login" *ngIf="showLoginButton">Log in</button>
       <button (click)="logout()" *ngIf="showLogoutButton">Log out</button>
     </p>
   `,

@@ -12,7 +12,7 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
   template: `
     <header>
       <a href="/">Home</a>
-      <h1>AQuicklists</h1>
+      <h1>Quicklists: AngularFire Using Signals</h1>
       <button (click)="checklistBeingEdited.set({})">Add Checklist</button>
     </header>
 

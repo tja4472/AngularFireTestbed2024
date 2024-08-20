@@ -5,7 +5,7 @@ import {
   signInWithPopup,
   signInAnonymously,
 } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +19,12 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class LoginComponent implements OnInit {
-  redirect = ['/'];
+  redirect = ['../'];
 
   constructor(
     @Optional() private auth: Auth,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {}
@@ -31,11 +32,16 @@ export class LoginComponent implements OnInit {
   async loginWithGoogle() {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(this.auth, provider);
-    await this.router.navigate(this.redirect);
+    await this.router.navigate(this.redirect, {
+      relativeTo: this.activatedRoute,
+    });
   }
 
   async loginAnonymously() {
     await signInAnonymously(this.auth);
-    await this.router.navigate(this.redirect);
+    // await this.router.navigate(this.redirect);
+    await this.router.navigate(this.redirect, {
+      relativeTo: this.activatedRoute,
+    });
   }
 }

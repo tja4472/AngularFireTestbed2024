@@ -10,38 +10,44 @@ export const routes: Routes = [
     pathMatch: 'prefix',
   },
   {
-    path: 'local-storage',
+    path: 'local-storage/signals',
     loadComponent: () => import('./local-storage/signals/home/home.component'),
   },
   {
-    path: 'local-storage/checklist/:id',
+    path: 'local-storage/signals/checklist/:id',
     loadComponent: () =>
       import('./local-storage/signals/checklist/checklist.component'),
   },
+  // >>> angular-fire <<<
   {
-    path: 'firestore-using-service',
+    path: 'angular-fire/basic',
+    loadComponent: () => import('./angular-fire/basic/home/home.component'),
+  },
+  {
+    path: 'angular-fire/basic/login',
+    loadComponent: () =>
+      import('./angular-fire/basic/login/login.component').then(
+        (m) => m.LoginComponent,
+      ),
+  },
+  {
+    path: 'angular-fire/signals',
     loadComponent: () =>
       import('./angular-fire/firestore-using-signals/home/home.component'),
   },
   {
-    path: 'firestore-using-service/checklist/:id',
+    path: 'angular-fire/signals/checklist/:id',
     loadComponent: () =>
       import(
         './angular-fire/firestore-using-signals/checklist/checklist.component'
       ),
   },
+  // >>>  <<<
   {
     path: 'foo',
     component: HomeComponent,
     outlet: 'primary',
     pathMatch: 'full',
-  },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./angular-fire/basic/login/login.component').then(
-        (m) => m.LoginComponent,
-      ),
   },
 ];
 

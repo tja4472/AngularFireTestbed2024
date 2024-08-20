@@ -12,7 +12,7 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
   template: `
     <header>
       <a href="/">Home</a>
-      <h1>Quicklists</h1>
+      <h1>Quicklists: Local Storage Using Signals</h1>
       <button (click)="checklistBeingEdited.set({})">Add Checklist</button>
     </header>
 
