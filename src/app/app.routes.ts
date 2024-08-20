@@ -32,15 +32,12 @@ export const routes: Routes = [
   },
   {
     path: 'angular-fire/signals',
-    loadComponent: () =>
-      import('./angular-fire/firestore-using-signals/home/home.component'),
+    loadComponent: () => import('./angular-fire/signals/home/home.component'),
   },
   {
     path: 'angular-fire/signals/checklist/:id',
     loadComponent: () =>
-      import(
-        './angular-fire/firestore-using-signals/checklist/checklist.component'
-      ),
+      import('./angular-fire/signals/checklist/checklist.component'),
   },
   // >>>  <<<
   {
