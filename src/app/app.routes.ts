@@ -21,13 +21,13 @@ export const routes: Routes = [
   {
     path: 'firestore-using-service',
     loadComponent: () =>
-      import('./angular-fire/firestore-using-service/home/home.component'),
+      import('./angular-fire/firestore-using-signals/home/home.component'),
   },
   {
     path: 'firestore-using-service/checklist/:id',
     loadComponent: () =>
       import(
-        './angular-fire/firestore-using-service/checklist/checklist.component'
+        './angular-fire/firestore-using-signals/checklist/checklist.component'
       ),
   },
   {
