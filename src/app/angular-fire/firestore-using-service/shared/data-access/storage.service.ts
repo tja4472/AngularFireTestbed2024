@@ -11,13 +11,13 @@ import {
   AddChecklist,
   Checklist,
   EditChecklist,
-} from '../../../../shared/interfaces/checklist';
+} from 'src/app/shared/interfaces/checklist';
 import {
   AddChecklistItem,
   ChecklistItem,
   EditChecklistItem,
   RemoveChecklistItem,
-} from '../../../../shared/interfaces/checklist-item';
+} from 'src/app/shared/interfaces/checklist-item';
 import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
 
 import {

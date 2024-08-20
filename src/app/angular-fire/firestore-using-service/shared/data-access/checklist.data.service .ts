@@ -5,7 +5,7 @@ import {
   AddChecklist,
   Checklist,
   EditChecklist,
-} from '../../../../shared/interfaces/checklist';
+} from 'src/app/shared/interfaces/checklist';
 
 import {
   collection,

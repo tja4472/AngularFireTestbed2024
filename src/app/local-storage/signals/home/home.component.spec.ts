@@ -7,7 +7,7 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
 import { DebugElement } from '@angular/core';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { MockFormModalComponent } from '../shared/ui/form-modal.component.spec';
-import { Checklist } from '../../shared/interfaces/checklist';
+import { Checklist } from 'src/app/shared/interfaces/checklist';
 import { FormBuilder } from '@angular/forms';
 import { ChecklistListComponent } from './ui/checklist-list.component';
 import { MockChecklistListComponent } from './ui/checklist-list.component.spec';

@@ -11,12 +11,12 @@ export const routes: Routes = [
   },
   {
     path: 'local-storage',
-    loadComponent: () => import('./local-storage/home/home.component'),
+    loadComponent: () => import('./local-storage/signals/home/home.component'),
   },
   {
     path: 'local-storage/checklist/:id',
     loadComponent: () =>
-      import('./local-storage/checklist/checklist.component'),
+      import('./local-storage/signals/checklist/checklist.component'),
   },
   {
     path: 'firestore-using-service',

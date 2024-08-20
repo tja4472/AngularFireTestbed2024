@@ -1,7 +1,7 @@
 import { Injectable, InjectionToken, PLATFORM_ID, inject } from '@angular/core';
 import { of } from 'rxjs';
-import { Checklist } from '../../../shared/interfaces/checklist';
-import { ChecklistItem } from '../../../shared/interfaces/checklist-item';
+import { Checklist } from 'src/app/shared/interfaces/checklist';
+import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 
 export const LOCAL_STORAGE = new InjectionToken<Storage>(
   'window local storage object',

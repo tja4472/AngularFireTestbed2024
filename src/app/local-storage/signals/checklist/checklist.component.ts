@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 import { ModalComponent } from '../shared/ui/modal.component';
-import { ChecklistItem } from '../../shared/interfaces/checklist-item';
+import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 import { FormBuilder } from '@angular/forms';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { ChecklistItemService } from './data-access/checklist-item.service';

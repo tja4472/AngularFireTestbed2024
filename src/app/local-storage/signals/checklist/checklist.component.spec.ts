@@ -11,7 +11,7 @@ import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { MockFormModalComponent } from '../shared/ui/form-modal.component.spec';
 import { FormBuilder } from '@angular/forms';
 import { ChecklistItemService } from './data-access/checklist-item.service';
-import { ChecklistItem } from '../../shared/interfaces/checklist-item';
+import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 
 describe('ChecklistComponent', () => {
   let component: ChecklistComponent;
