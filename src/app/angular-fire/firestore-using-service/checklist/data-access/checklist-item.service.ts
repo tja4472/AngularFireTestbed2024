@@ -61,7 +61,12 @@ export class ChecklistItemService {
 
     this.add$.pipe(takeUntilDestroyed()).subscribe(
       (checklistItem) =>
-        this.checklistItemDataService.add(checklistItem, this.userId),
+        // this.checklistItemDataService.add(checklistItem, this.userId),
+        this.checklistItemDataService.set({
+          userId: this.userId,
+          checklistId: checklistItem.checklistId,
+          data: checklistItem.item,
+        }),
       /*      
       this.state.update((state) => ({
         ...state,
@@ -79,7 +84,12 @@ export class ChecklistItemService {
     );
 
     this.edit$.pipe(takeUntilDestroyed()).subscribe(
-      (update) => this.checklistItemDataService.edit(update, this.userId),
+      (update) =>
+        this.checklistItemDataService.update({
+          userId: this.userId,
+          id: update.id,
+          data: update.data,
+        }),
       /*      
       this.state.update((state) => ({
         ...state,
@@ -100,26 +110,53 @@ export class ChecklistItemService {
 */
     );
 
-    this.toggle$.pipe(takeUntilDestroyed()).subscribe((checklistItemId) =>
-      this.state.update((state) => ({
-        ...state,
-        checklistItems: state.checklistItems.map((item) =>
-          item.id === checklistItemId
-            ? { ...item, checked: !item.checked }
-            : item,
-        ),
-      })),
-    );
+    this.toggle$.pipe(takeUntilDestroyed()).subscribe((checklistItemId) => {
+      const item = this.state().checklistItems.find(
+        (item) => item.id === checklistItemId,
+      );
 
-    this.reset$.pipe(takeUntilDestroyed()).subscribe((checklistId) =>
-      this.state.update((state) => ({
+      if (item) {
+        this.checklistItemDataService.update({
+          userId: this.userId,
+          id: item.id,
+          data: { checked: !item.checked },
+        });
+      }
+      /*        
+        return this.state.update((state) => ({
+          ...state,
+          checklistItems: state.checklistItems.map((item) => item.id === checklistItemId
+            ? { ...item, checked: !item.checked }
+            : item
+          ),
+        }));
+      */
+    });
+
+    // TODO: reset: Update to use firestore
+    this.reset$.pipe(takeUntilDestroyed()).subscribe((checklistId) => {
+      this.state().checklistItems.map((item) => {
+        if (item.checklistId === checklistId) {
+          if (item.checked) {
+            this.checklistItemDataService.update({
+              userId: this.userId,
+              id: item.id,
+              data: { checked: false },
+            });
+          }
+        }
+      });
+      /*      
+      return this.state.update((state) => ({
         ...state,
         checklistItems: state.checklistItems.map((item) =>
           item.checklistId === checklistId ? { ...item, checked: false } : item,
         ),
-      })),
-    );
+      }));
+      */
+    });
 
+    // TODO: checklistRemoved: Update to use firestore
     this.checklistRemoved$.pipe(takeUntilDestroyed()).subscribe((checklistId) =>
       this.state.update((state) => ({
         ...state,

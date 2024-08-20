@@ -20,6 +20,13 @@ service cloud.firestore {
       allow read, write: if true
     }
 
+    // Matches any document in the users collection as well as any document
+    // in a subcollection.
+    match /AngularFireUsers/{UserId}/{document=**} {
+      allow read, write: if true
+    }
+
+
     match /{document=**}{
       allow read, write: if false
     }
