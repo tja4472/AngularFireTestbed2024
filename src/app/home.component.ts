@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <h2>Local Storage</h2>
 
     <a href="/local-storage/signals">Using Signals</a><br />
-    Using Signal Store
+    <a href="/local-storage/signal-store">Using Signal Store</a><br />
 
     <h2>AngularFire</h2>
     <a href="/angular-fire/basic">Basic</a><br />

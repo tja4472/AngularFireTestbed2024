@@ -9,6 +9,7 @@ export const routes: Routes = [
     outlet: 'primary',
     pathMatch: 'prefix',
   },
+  // >>> local-storage <<<
   {
     path: 'local-storage/signals',
     loadComponent: () => import('./local-storage/signals/home/home.component'),
@@ -17,6 +18,16 @@ export const routes: Routes = [
     path: 'local-storage/signals/checklist/:id',
     loadComponent: () =>
       import('./local-storage/signals/checklist/checklist.component'),
+  },
+  {
+    path: 'local-storage/signal-store',
+    loadComponent: () =>
+      import('./local-storage/signal-store/home/home.component'),
+  },
+  {
+    path: 'local-storage/signal-store/checklist/:id',
+    loadComponent: () =>
+      import('./local-storage/signal-store/checklist/checklist.component'),
   },
   // >>> angular-fire <<<
   {
