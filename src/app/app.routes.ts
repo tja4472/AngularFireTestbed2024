@@ -12,43 +12,25 @@ export const routes: Routes = [
   // >>> local-storage <<<
   {
     path: 'local-storage/signals',
-    loadComponent: () => import('./local-storage/signals/home/home.component'),
+    loadChildren: () =>
+      import('./local-storage/signals/routes').then((m) => m.ROUTES),
   },
-  {
-    path: 'local-storage/signals/checklist/:id',
-    loadComponent: () =>
-      import('./local-storage/signals/checklist/checklist.component'),
-  },
+
   {
     path: 'local-storage/signal-store',
-    loadComponent: () =>
-      import('./local-storage/signal-store/home/home.component'),
-  },
-  {
-    path: 'local-storage/signal-store/checklist/:id',
-    loadComponent: () =>
-      import('./local-storage/signal-store/checklist/checklist.component'),
+    loadChildren: () =>
+      import('./local-storage/signal-store/routes').then((m) => m.ROUTES),
   },
   // >>> angular-fire <<<
   {
     path: 'angular-fire/basic',
-    loadComponent: () => import('./angular-fire/basic/home/home.component'),
-  },
-  {
-    path: 'angular-fire/basic/login',
-    loadComponent: () =>
-      import('./angular-fire/basic/login/login.component').then(
-        (m) => m.LoginComponent,
-      ),
+    loadChildren: () =>
+      import('./angular-fire/basic/routes').then((m) => m.ROUTES),
   },
   {
     path: 'angular-fire/signals',
-    loadComponent: () => import('./angular-fire/signals/home/home.component'),
-  },
-  {
-    path: 'angular-fire/signals/checklist/:id',
-    loadComponent: () =>
-      import('./angular-fire/signals/checklist/checklist.component'),
+    loadChildren: () =>
+      import('./angular-fire/signals/routes').then((m) => m.ROUTES),
   },
   // >>>  <<<
   {
