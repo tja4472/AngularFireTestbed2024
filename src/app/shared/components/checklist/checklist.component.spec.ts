@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import ChecklistComponent from './checklist.component';
-import { ChecklistService } from '../shared/data-access/checklist.service';
+import { ChecklistService } from '../../../local-storage/signals/shared/data-access/checklist.service';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { ModalComponent } from '../shared/ui/modal.component';
-import { MockModalComponent } from '../shared/ui/modal.component.spec';
-import { FormModalComponent } from '../shared/ui/form-modal.component';
-import { MockFormModalComponent } from '../shared/ui/form-modal.component.spec';
+import { ModalComponent } from '../shared/modal.component';
+import { MockModalComponent } from '../shared/modal.component.spec';
+import { FormModalComponent } from '../shared/form-modal.component';
+import { MockFormModalComponent } from '../shared/form-modal.component.spec';
 import { FormBuilder } from '@angular/forms';
-import { ChecklistItemService } from './data-access/checklist-item.service';
+import { ChecklistItemService } from '../../../local-storage/signals/checklist/data-access/checklist-item.service';
 import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 
 describe('ChecklistComponent', () => {

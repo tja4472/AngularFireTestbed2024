@@ -1,15 +1,15 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
-import { ChecklistService } from '../shared/data-access/checklist.service';
+import { ChecklistService } from '../../../local-storage/signals/shared/data-access/checklist.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
-import { ModalComponent } from '../shared/ui/modal.component';
+import { ModalComponent } from '../shared/modal.component';
 import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 import { FormBuilder } from '@angular/forms';
-import { FormModalComponent } from '../shared/ui/form-modal.component';
-import { ChecklistItemService } from './data-access/checklist-item.service';
+import { FormModalComponent } from '../shared/form-modal.component';
+import { ChecklistItemService } from '../../../local-storage/signals/checklist/data-access/checklist-item.service';
 
 @Component({
   standalone: true,

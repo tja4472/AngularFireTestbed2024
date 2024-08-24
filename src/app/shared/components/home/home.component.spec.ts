@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import HomeComponent from './home.component';
 import { By } from '@angular/platform-browser';
-import { ModalComponent } from '../shared/ui/modal.component';
-import { MockModalComponent } from '../shared/ui/modal.component.spec';
-import { ChecklistService } from '../shared/data-access/checklist.service';
+import { ModalComponent } from '../shared/modal.component';
+import { MockModalComponent } from '../shared/modal.component.spec';
+import { ChecklistService } from '../../../local-storage/signals/shared/data-access/checklist.service';
 import { DebugElement } from '@angular/core';
-import { FormModalComponent } from '../shared/ui/form-modal.component';
-import { MockFormModalComponent } from '../shared/ui/form-modal.component.spec';
+import { FormModalComponent } from '../shared/form-modal.component';
+import { MockFormModalComponent } from '../shared/form-modal.component.spec';
 import { Checklist } from 'src/app/shared/interfaces/checklist';
 import { FormBuilder } from '@angular/forms';
 import { ChecklistListComponent } from './ui/checklist-list.component';

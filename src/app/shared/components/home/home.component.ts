@@ -1,10 +1,10 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ChecklistListComponent } from './ui/checklist-list.component';
 import { Checklist } from 'src/app/shared/interfaces/checklist';
-import { ModalComponent } from '../shared/ui/modal.component';
-import { FormModalComponent } from '../shared/ui/form-modal.component';
+import { ModalComponent } from '../shared/modal.component';
+import { FormModalComponent } from '../shared/form-modal.component';
 import { FormBuilder } from '@angular/forms';
-import { ChecklistService } from '../shared/data-access/checklist.service';
+import { ChecklistService } from '../../../local-storage/signals/shared/data-access/checklist.service';
 
 @Component({
   selector: 'app-home',
