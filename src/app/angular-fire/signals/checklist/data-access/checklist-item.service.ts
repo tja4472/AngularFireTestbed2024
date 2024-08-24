@@ -16,9 +16,7 @@ export interface ChecklistItemsState {
   loaded: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ChecklistItemService {
   private storageService = inject(StorageService);
   private checklistItemDataService = inject(ChecklistItemDataService);

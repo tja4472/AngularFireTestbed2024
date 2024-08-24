@@ -44,9 +44,7 @@ export const LOCAL_STORAGE = new InjectionToken<Storage>(
   },
 );
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class StorageService {
   storage = inject(LOCAL_STORAGE);
   firestore = inject(Firestore);

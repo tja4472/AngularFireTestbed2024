@@ -38,9 +38,7 @@ const ChecklistStore = signalStore(
   })),
 );
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ChecklistService {
   private checklistItemService = inject(ChecklistItemService);
   private storageService = inject(StorageService);

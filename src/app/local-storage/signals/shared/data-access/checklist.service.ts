@@ -15,9 +15,7 @@ export interface ChecklistsState {
   error: string | null;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ChecklistService {
   private checklistItemService = inject(ChecklistItemService);
   private storageService = inject(StorageService);
