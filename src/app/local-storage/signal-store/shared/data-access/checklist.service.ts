@@ -6,9 +6,8 @@ import {
   Checklist,
   EditChecklist,
 } from 'src/app/shared/interfaces/checklist';
-import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
+import { ChecklistItemServiceBase } from 'src/app/shared/checklist-item.service.base';
 import { StorageService } from './storage.service';
-
 import {
   patchState,
   signalStore,
@@ -40,7 +39,7 @@ const ChecklistStore = signalStore(
 
 @Injectable()
 export class ChecklistService {
-  private checklistItemService = inject(ChecklistItemService);
+  private checklistItemService = inject(ChecklistItemServiceBase);
   private storageService = inject(StorageService);
 
   private checklistStore = new ChecklistStore();

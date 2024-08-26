@@ -1,7 +1,7 @@
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
-import { StorageService } from '../../shared/data-access/storage.service';
+import { ChecklistItemServiceBase } from 'src/app/shared/checklist-item.service.base';
 import { RemoveChecklist } from 'src/app/shared/interfaces/checklist';
 import {
   AddChecklistItem,
@@ -11,14 +11,14 @@ import {
 } from 'src/app/shared/interfaces/checklist-item';
 
 import { ChecklistItemDataService } from '../../shared/data-access/checklist-item.data.service';
+
 export interface ChecklistItemsState {
   checklistItems: ChecklistItem[];
   loaded: boolean;
 }
 
 @Injectable()
-export class ChecklistItemService {
-  private storageService = inject(StorageService);
+export class ChecklistItemService extends ChecklistItemServiceBase {
   private checklistItemDataService = inject(ChecklistItemDataService);
 
   private userId = 'DummyUser';
@@ -47,6 +47,7 @@ export class ChecklistItemService {
   checklistRemoved$ = new Subject<RemoveChecklist>();
 
   constructor() {
+    super();
     this.checklistItemsLoaded$
       .pipe(takeUntilDestroyed())
       .subscribe((checklistItems) =>
@@ -163,12 +164,5 @@ export class ChecklistItemService {
         ),
       })),
     );
-
-    // effects
-    effect(() => {
-      if (this.loaded()) {
-        this.storageService.saveChecklistItems(this.checklistItems());
-      }
-    });
   }
 }

@@ -4,7 +4,8 @@ import { Checklist } from 'src/app/shared/interfaces/checklist';
 import { ModalComponent } from '../shared/ui/modal.component';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { FormBuilder } from '@angular/forms';
-import { ChecklistService } from '../shared/data-access/checklist.service';
+import { ChecklistServiceBase } from 'src/app/shared/checklist.service.base';
+
 
 @Component({
   selector: 'app-home',
@@ -52,7 +53,7 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
 })
 export default class HomeComponent {
   formBuilder = inject(FormBuilder);
-  checklistService = inject(ChecklistService);
+  checklistService = inject(ChecklistServiceBase);
 
   checklistBeingEdited = signal<Partial<Checklist> | null>(null);
 

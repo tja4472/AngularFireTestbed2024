@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import HomeComponent from './home.component';
+import Home1Component from './home.component';
 import { By } from '@angular/platform-browser';
-import { ModalComponent } from '../shared/ui/modal.component';
-import { MockModalComponent } from '../shared/ui/modal.component.spec';
-import { ChecklistService } from '../shared/data-access/checklist.service';
+import { ModalComponent } from '../../../local-storage/signal-store/shared/ui/modal.component';
+import { MockModalComponent } from '../../../local-storage/signal-store/shared/ui/modal.component.spec';
+import { ChecklistService } from '../../../local-storage/signal-store/shared/data-access/checklist.service';
 import { DebugElement } from '@angular/core';
-import { FormModalComponent } from '../shared/ui/form-modal.component';
-import { MockFormModalComponent } from '../shared/ui/form-modal.component.spec';
+import { FormModalComponent } from '../../../local-storage/signal-store/shared/ui/form-modal.component';
+import { MockFormModalComponent } from '../../../local-storage/signal-store/shared/ui/form-modal.component.spec';
 import { Checklist } from 'src/app/shared/interfaces/checklist';
 import { FormBuilder } from '@angular/forms';
 import { ChecklistListComponent } from './ui/checklist-list.component';
 import { MockChecklistListComponent } from './ui/checklist-list.component.spec';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let component: Home1Component;
+  let fixture: ComponentFixture<Home1Component>;
   let checklistService: ChecklistService;
   let formBuilder: FormBuilder;
 
@@ -22,7 +22,7 @@ describe('HomeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HomeComponent],
+      imports: [Home1Component],
       providers: [
         {
           provide: FormBuilder,
@@ -54,7 +54,7 @@ describe('HomeComponent', () => {
         },
       ],
     })
-      .overrideComponent(HomeComponent, {
+      .overrideComponent(Home1Component, {
         remove: {
           imports: [ModalComponent, FormModalComponent, ChecklistListComponent],
         },
@@ -71,7 +71,7 @@ describe('HomeComponent', () => {
     checklistService = TestBed.inject(ChecklistService);
     formBuilder = TestBed.inject(FormBuilder);
 
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(Home1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

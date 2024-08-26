@@ -4,15 +4,14 @@ import { Checklist } from 'src/app/shared/interfaces/checklist';
 import { ModalComponent } from '../shared/modal.component';
 import { FormModalComponent } from '../shared/form-modal.component';
 import { FormBuilder } from '@angular/forms';
-import { ChecklistService } from '../../../local-storage/signals/shared/data-access/checklist.service';
+import { ChecklistServiceBase } from 'src/app/shared/checklist.service.base';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   template: `
     <header>
-      <a href="/">Home</a>
-      <h1>Quicklists: Local Storage Using Signals</h1>
+      <a href="/">Home</a><br />
       <button (click)="checklistBeingEdited.set({})">Add Checklist</button>
     </header>
 
@@ -52,7 +51,7 @@ import { ChecklistService } from '../../../local-storage/signals/shared/data-acc
 })
 export default class HomeComponent {
   formBuilder = inject(FormBuilder);
-  checklistService = inject(ChecklistService);
+  checklistService = inject(ChecklistServiceBase);
 
   checklistBeingEdited = signal<Partial<Checklist> | null>(null);
 

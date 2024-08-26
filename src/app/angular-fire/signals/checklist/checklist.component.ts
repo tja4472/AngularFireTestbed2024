@@ -1,7 +1,6 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
-import { ChecklistService } from '../shared/data-access/checklist.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
@@ -9,7 +8,9 @@ import { ModalComponent } from '../shared/ui/modal.component';
 import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 import { FormBuilder } from '@angular/forms';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
-import { ChecklistItemService } from './data-access/checklist-item.service';
+
+import { ChecklistItemServiceBase } from 'src/app/shared/checklist-item.service.base';
+import { ChecklistServiceBase } from 'src/app/shared/checklist.service.base';
 
 @Component({
   standalone: true,
@@ -59,8 +60,8 @@ import { ChecklistItemService } from './data-access/checklist-item.service';
   ],
 })
 export default class ChecklistComponent {
-  checklistService = inject(ChecklistService);
-  checklistItemService = inject(ChecklistItemService);
+  checklistService = inject(ChecklistServiceBase);
+  checklistItemService = inject(ChecklistItemServiceBase);
   route = inject(ActivatedRoute);
   formBuilder = inject(FormBuilder);
 

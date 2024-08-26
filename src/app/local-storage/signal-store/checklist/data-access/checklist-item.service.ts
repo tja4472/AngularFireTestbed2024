@@ -1,7 +1,6 @@
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
-import { StorageService } from '../../shared/data-access/storage.service';
 import { RemoveChecklist } from 'src/app/shared/interfaces/checklist';
 import {
   AddChecklistItem,
@@ -9,6 +8,7 @@ import {
   EditChecklistItem,
   RemoveChecklistItem,
 } from 'src/app/shared/interfaces/checklist-item';
+import { StorageService } from '../../shared/data-access/storage.service';
 
 export interface ChecklistItemsState {
   checklistItems: ChecklistItem[];

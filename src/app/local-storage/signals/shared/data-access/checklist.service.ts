@@ -6,7 +6,9 @@ import {
   Checklist,
   EditChecklist,
 } from 'src/app/shared/interfaces/checklist';
-import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
+
+import { ChecklistItemServiceBase } from 'src/app/shared/checklist-item.service.base';
+import { ChecklistServiceBase } from 'src/app/shared/checklist.service.base';
 import { StorageService } from './storage.service';
 
 export interface ChecklistsState {
@@ -16,8 +18,8 @@ export interface ChecklistsState {
 }
 
 @Injectable()
-export class ChecklistService {
-  private checklistItemService = inject(ChecklistItemService);
+export class ChecklistService extends ChecklistServiceBase {
+  private checklistItemService = inject(ChecklistItemServiceBase);
   private storageService = inject(StorageService);
 
   // state
@@ -39,6 +41,7 @@ export class ChecklistService {
   remove$ = this.checklistItemService.checklistRemoved$;
 
   constructor() {
+    super();
     // reducers
     this.checklistsLoaded$.pipe(takeUntilDestroyed()).subscribe({
       next: (checklists) =>
