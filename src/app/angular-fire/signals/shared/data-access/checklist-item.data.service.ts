@@ -21,9 +21,11 @@ import {
   deleteDoc,
   doc,
   Firestore,
+  getDocs,
   query,
   setDoc,
   updateDoc,
+  where,
 } from '@angular/fire/firestore';
 import { FirestoreUtils } from '../../../../shared/firestore-utils';
 
@@ -182,6 +184,23 @@ export class ChecklistItemDataService {
       id,
     );
     await deleteDoc(documentReference);
+  }
+
+  public async removeItemsForChecklist(
+    checklistId: string,
+    userId: string,
+  ): Promise<void> {
+    //
+    const q = query(
+      this.getfirestoreDocCollectionRef(userId),
+      where('checklistId', '==', checklistId),
+    );
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => {
+      console.log(doc.id, ' => ', doc.data());
+      await this.remove(doc.id, userId);
+    });
   }
 
   private createId(): string {

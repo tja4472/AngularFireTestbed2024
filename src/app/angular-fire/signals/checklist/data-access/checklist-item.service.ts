@@ -132,7 +132,6 @@ export class ChecklistItemService extends ChecklistItemServiceBase {
       */
     });
 
-    // TODO: reset: Update to use firestore
     this.reset$.pipe(takeUntilDestroyed()).subscribe((checklistId) => {
       this.state().checklistItems.map((item) => {
         if (item.checklistId === checklistId) {
@@ -155,14 +154,13 @@ export class ChecklistItemService extends ChecklistItemServiceBase {
       */
     });
 
-    // TODO: checklistRemoved: Update to use firestore
-    this.checklistRemoved$.pipe(takeUntilDestroyed()).subscribe((checklistId) =>
-      this.state.update((state) => ({
-        ...state,
-        checklistItems: state.checklistItems.filter(
-          (item) => item.checklistId !== checklistId,
-        ),
-      })),
-    );
+    this.checklistRemoved$
+      .pipe(takeUntilDestroyed())
+      .subscribe((checklistId) => {
+        this.checklistItemDataService.removeItemsForChecklist(
+          checklistId,
+          this.userId,
+        );
+      });
   }
 }

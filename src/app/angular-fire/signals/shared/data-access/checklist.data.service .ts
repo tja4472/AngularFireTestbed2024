@@ -32,7 +32,7 @@ export class ChecklistDataService {
   // https://jasmine.github.io/tutorials/module_mocking#angular
   collectionPath(userId: string): string {
     //
-    const path = `/users/${userId}/AsService/Checklist/Items`;
+    const path = `/AngularFireUsers/${userId}/Checklists`;
 
     return path;
   }
