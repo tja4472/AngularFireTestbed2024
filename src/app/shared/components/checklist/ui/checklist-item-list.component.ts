@@ -1,7 +1,13 @@
-import { Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/interfaces/checklist-item';
 @Component({
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-checklist-item-list',
   template: `
     <section>

@@ -1,10 +1,16 @@
-import { Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Checklist } from 'src/app/shared/interfaces/checklist';
 
 @Component({
   standalone: true,
   selector: 'app-checklist-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul>
       @for (checklist of checklists(); track checklist.id) {

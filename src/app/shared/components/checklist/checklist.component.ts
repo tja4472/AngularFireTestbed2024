@@ -1,4 +1,11 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 import { ChecklistServiceBase } from 'src/app/shared/checklist.service.base';
@@ -14,6 +21,7 @@ import { ChecklistItemServiceBase } from 'src/app/shared/checklist-item.service.
 @Component({
   standalone: true,
   selector: 'app-checklist',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (checklist(); as checklist) {
       <app-checklist-header

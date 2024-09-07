@@ -1,4 +1,10 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { ChecklistListComponent } from './ui/checklist-list.component';
 import { Checklist } from 'src/app/shared/interfaces/checklist';
 import { ModalComponent } from '../shared/modal.component';
@@ -8,6 +14,7 @@ import { ChecklistServiceBase } from 'src/app/shared/checklist.service.base';
 
 @Component({
   selector: 'app-home',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   template: `
     <header>

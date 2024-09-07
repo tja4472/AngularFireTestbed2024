@@ -1,10 +1,16 @@
 import { CommonModule, KeyValuePipe } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   selector: 'app-form-modal',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header>
       <h2>{{ title() }}</h2>

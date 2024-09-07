@@ -1,5 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import {
+  ChangeDetectionStrategy,
   Component,
   TemplateRef,
   contentChild,
@@ -11,6 +12,7 @@ import {
 @Component({
   standalone: true,
   selector: 'app-modal',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<div></div>`,
 })
 export class ModalComponent {

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import HomeComponent from '../../shared/components/home/home.component';
 import HeaderComponent from './header.component';
 
 @Component({
   selector: 'app-local-home',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   template: `
     <app-header />
